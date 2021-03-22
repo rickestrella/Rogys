@@ -4,17 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_img"
-    tools:context=".SplashActivity">
+    android:background="@drawable/splash_bg"
+    tools:context=".activities.SplashActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tvAppName"
-        android:text="Rogy's"
-        android:textSize="@dimen/splash_title_text_size"
-        android:gravity="center">
+    <ImageView
+        android:layout_width="@dimen/auth_logo_width_size"
+        android:layout_height="@dimen/auth_logo_height_size"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
+        android:padding="15.7dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/rogys_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
 
-    </TextView>
+    <ImageView
+        android:layout_width="@dimen/auth_logo_width_size"
+        android:layout_height="@dimen/auth_logo_height_size"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
+        android:padding="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/rogys_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

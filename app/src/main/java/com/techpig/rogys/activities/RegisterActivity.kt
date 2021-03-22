@@ -1,25 +1,23 @@
-package com.techpig.rogys
+package com.techpig.rogys.activities
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.view.Window
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
+import com.techpig.rogys.R
+import com.techpig.rogys.utils.RogysTextViewBold
 
-class SplashActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    lateinit var tvAppName: TextView
+    lateinit var tv_login: RogysTextViewBold
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_register)
 
-        tvAppName = findViewById(R.id.tvAppName)
+        tv_login = findViewById(R.id.tv_login)
 
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -31,13 +29,10 @@ class SplashActivity : AppCompatActivity() {
             )
         }
 
-        @Suppress("DEPRECATION")
-        Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        tv_login.setOnClickListener {
+            val login = Intent(this, LoginActivity::class.java)
+            startActivity(login)
             finish()
-        }, 2500)
-
-        val montserratRegular :Typeface = Typeface.createFromAsset(assets, "Montserrat-Regular.ttf")
-        tvAppName.typeface = montserratRegular
+        }
     }
 }
