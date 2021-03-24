@@ -19,4 +19,8 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="Theme.Rogys.NoActionBar.CheckBoxes" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/checkbox_pink</item>
+    </style>
 </resources>

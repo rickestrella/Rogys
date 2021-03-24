@@ -15,4 +15,8 @@
     <string name="et_hint_confirm_password">Confirma tu contraseña</string>
     <string name="btn_lbl_register">Registrarse</string>
     <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
+    <string name="please_wait">Por favor, espera&#8230;</string>
+    <string name="password_forgotten">¿Has olvidado tu contraseña?</string>
+    <string name="forgotten_password_info">Ingresa la dirección de correo electrónico con el que te registraste y te enviaremos un correo para reestablecer tu contraseña.</string>
+    <string name="submit">Enviar</string>
 </resources>
