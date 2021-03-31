@@ -1,4 +1,4 @@
-package com.techpig.rogys.activities
+package com.techpig.rogys.ui.activities
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthEmailException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.techpig.rogys.BaseActivity
 import com.techpig.rogys.R
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 

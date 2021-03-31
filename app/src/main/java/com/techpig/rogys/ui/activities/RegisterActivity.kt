@@ -1,4 +1,4 @@
-package com.techpig.rogys.activities
+package com.techpig.rogys.ui.activities
 
 import android.content.Intent
 import android.os.Build
@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.google.firebase.auth.*
-import com.techpig.rogys.BaseActivity
 import com.techpig.rogys.R
 import com.techpig.rogys.firestore.FirestoreClass
 import com.techpig.rogys.models.User
@@ -65,7 +64,7 @@ class RegisterActivity : BaseActivity() {
     private fun validateFields(): Boolean {
         return when {
             TextUtils.isEmpty(
-                til_name.editText!!.text.toString()
+                et_name.text.toString()
                     .trim { it <= ' ' }) || et_name.length() <= 2 -> {
                 showAlerter(
                     "¿Cuál es tu nombre?", "Introduce tu nombre", true,
@@ -75,7 +74,7 @@ class RegisterActivity : BaseActivity() {
             }
 
             TextUtils.isEmpty(
-                til_last_name.editText!!.text.toString()
+                et_last_name.text.toString()
                     .trim { it <= ' ' }) || et_last_name.length() <= 2 -> {
                 showAlerter(
                     "¿Cuál es tu apellido?", "Introduce tu apellido", true,
@@ -84,8 +83,8 @@ class RegisterActivity : BaseActivity() {
                 false
             }
 
-            TextUtils.isEmpty(til_email.editText!!.text.toString()) && !android.util.Patterns.EMAIL_ADDRESS.matcher(
-                til_email.editText!!.text.toString()
+            TextUtils.isEmpty(et_email.text.toString()) && !android.util.Patterns.EMAIL_ADDRESS.matcher(
+                et_email.text.toString()
             ).matches() -> {
                 showAlerter(
                     "Error", "Introduce un correo válido", true,
@@ -94,7 +93,7 @@ class RegisterActivity : BaseActivity() {
                 false
             }
 
-            TextUtils.isEmpty(til_password.editText!!.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_password.text.toString().trim { it <= ' ' }) -> {
                 showAlerter(
                     "Contraseña inválida", "Introduce una contraseña", true,
                     3500
@@ -103,8 +102,8 @@ class RegisterActivity : BaseActivity() {
             }
 
             TextUtils.isEmpty(
-                til_confirm_password.editText!!.text.toString()
-                    .trim { it <= ' ' }) || (til_password.editText!!.text.toString() != til_confirm_password.editText!!.text.toString()) -> {
+                et_confirm_password.text.toString()
+                    .trim { it <= ' ' }) || (et_password.text.toString() != et_confirm_password.text.toString()) -> {
                 showAlerter(
                     "Las contraseñas no coinciden",
                     "Verifica que hayas escrito bien las contraseñas",
@@ -135,8 +134,8 @@ class RegisterActivity : BaseActivity() {
 
             showProgressDialog(resources.getString(R.string.please_wait))
 
-            val email: String = til_email.editText!!.text.toString().trim { it <= ' ' }
-            val password: String = til_password.editText!!.text.toString().trim { it <= ' ' }
+            val email: String = et_email.text.toString().trim { it <= ' ' }
+            val password: String = et_password.text.toString().trim { it <= ' ' }
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -148,9 +147,9 @@ class RegisterActivity : BaseActivity() {
 
                         val user = User(
                         firebaseUser.uid,
-                        til_name.editText!!.text.toString().trim {it <= ' '},
-                        til_last_name.editText!!.text.toString().trim {it <= ' '},
-                        til_email.editText!!.text.toString().trim {it <= ' '},
+                        et_name.text.toString().trim {it <= ' '},
+                        et_last_name.text.toString().trim {it <= ' '},
+                        et_email.text.toString().trim {it <= ' '},
                         )
 
                         FirestoreClass().registerUser(this@RegisterActivity, user)

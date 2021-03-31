@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity">
+    tools:context=".ui.activities.LoginActivity">
 
     <FrameLayout
         android:id="@+id/fl_header_image"
@@ -43,55 +43,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fl_header_image" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.github.florent37.materialtextfield.MaterialTextField
         android:id="@+id/til_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="35dp"
-        android:hint="@string/et_hint_email_id"
-        android:textColorHint="@color/app_primary_pink"
-        app:boxStrokeColor="@color/app_primary_pink"
-        app:hintTextColor="@color/app_primary_pink"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:mtf_backgroundColor="@color/white"
+        app:mtf_image="@drawable/ic_email"
+        app:mtf_labelColor="@color/app_primary_pink"
+        app:mtf_openKeyboardOnFocus="true">
 
         <com.techpig.rogys.utils.RogysEditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/et_hint_email_id"
             android:inputType="textEmailAddress"
             android:padding="@dimen/et_padding"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/et_textSize" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.github.florent37.materialtextfield.MaterialTextField
         android:id="@+id/til_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="25dp"
         android:layout_marginTop="20dp"
-        android:hint="@string/et_hint_password"
-        android:textColorHint="@color/app_primary_pink"
-        app:boxStrokeColor="@color/app_primary_pink"
-        app:hintTextColor="@color/app_primary_pink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_email">
+        app:layout_constraintTop_toBottomOf="@+id/til_email"
+        app:mtf_backgroundColor="@color/white"
+        app:mtf_image="@drawable/ic_key"
+        app:mtf_labelColor="@color/app_primary_pink"
+        app:mtf_openKeyboardOnFocus="true">
 
         <com.techpig.rogys.utils.RogysEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/et_hint_password"
             android:inputType="textPassword"
             android:padding="@dimen/et_padding"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/et_textSize" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.github.florent37.materialtextfield.MaterialTextField>
 
     <com.techpig.rogys.utils.RogysTextView
         android:id="@+id/tv_forgot_password"
@@ -126,9 +126,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login">

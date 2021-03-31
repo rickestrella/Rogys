@@ -1,14 +1,16 @@
-package com.techpig.rogys
+package com.techpig.rogys.ui.activities
 
 import android.app.Dialog
+import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.tapadoo.alerter.Alerter
+import com.techpig.rogys.R
 import kotlinx.android.synthetic.main.dialog_progress.*
-import kotlin.system.exitProcess
 
 open class BaseActivity : AppCompatActivity() {
 
+    private var doubleBackPressed = false
     lateinit var mProgressDialog: Dialog
 
     fun showAlerter(title: String, message: String, isErrorAlert: Boolean, duration: Long) {
@@ -36,7 +38,29 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.show()
     }
 
+    fun makeLongToast(message: String) {
+        Toast.makeText(this@BaseActivity, message, Toast.LENGTH_LONG).show()
+    }
+
+    fun makeShortToast(message: String) {
+        Toast.makeText(this@BaseActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
+    }
+
+    fun doubleBackToExit() {
+        if (doubleBackPressed) {
+//            super.onBackPressed()
+            finish()
+            return
+        }
+
+        this.doubleBackPressed = true
+        makeShortToast(getString(R.string.press_back_again_to_exit))
+
+        @Suppress("DEPRECATION")
+        Handler().postDelayed({ doubleBackPressed = false }, 2000)
     }
 }

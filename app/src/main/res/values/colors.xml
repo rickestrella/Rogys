@@ -113,8 +113,9 @@
     <color name="hard_pink">#B65590</color>
     <color name="hard_pink_darker">#8F1860</color>
 
-    <color name="app_primary_pink">#ffbaba</color>
-    <color name="app_secondary_pink">#f5eded</color>
+    <color name="app_primary_pink">#FBB1B1</color>
+    <color name="app_secondary_pink">#FFD4D4</color>
+    <color name="app_super_light_pink">#FFF6F6</color>
 
     <color name="primary_pink">#C57487</color>
     <color name="primary_pink_lighter">#E494A7</color>
@@ -147,5 +148,7 @@
     <color name="orange_2">#DA5A00</color>
     <color name="orange_3">#7C3C00</color>
     <color name="red_1">#871700</color>
+    <color name="colorBorder">#E8E6E6</color>
+    <color name="colorDarkGrey">#878787</color>
 
 </resources>

@@ -3,13 +3,18 @@ package com.techpig.rogys.firestore
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.techpig.rogys.activities.LoginActivity
-import com.techpig.rogys.activities.RegisterActivity
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.techpig.rogys.ui.activities.LoginActivity
+import com.techpig.rogys.ui.activities.RegisterActivity
+import com.techpig.rogys.ui.activities.UserProfileActivity
 import com.techpig.rogys.models.User
+import com.techpig.rogys.ui.activities.SettingsActivity
 import com.techpig.rogys.utils.Constants
 
 class FirestoreClass {
@@ -62,13 +67,91 @@ class FirestoreClass {
                     "${user.firstName} ${user.lastName}"
                 )
 
+                editor.putString(Constants.LOGGED_IN_FIRSTNAME, "${user.firstName}")
+
                 editor.apply()
 
                 when (activity) {
                     is LoginActivity -> {
                         activity.userLoggedInSuccess(user)
                     }
+                    is SettingsActivity -> {
+                        activity.userDetailsSuccess(user)
+                    }
                 }
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is LoginActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is SettingsActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+
+                Log.e(activity.javaClass.simpleName, "Error while getting user details", e)
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
+        mFireStore.collection(Constants.USERS).document(getCurrentUserId())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.userProfileUpdateSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(activity.javaClass.simpleName, "Error while updating user details.", e)
+            }
+    }
+
+    fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
+            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "." + Constants.getFileExtension(
+                activity,
+                imageFileUri
+            )
+        )
+
+        sRef.putFile(imageFileUri!!)
+            .addOnSuccessListener { taskSnapShot ->
+                // The image upload is success
+                Log.e(
+                    "Firebase Image URL",
+                    taskSnapShot.metadata!!.reference!!.downloadUrl.toString()
+                )
+
+                // Get the downloadable url from the task snapshot
+                taskSnapShot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri ->
+                    Log.e("Downloadable image URL", uri.toString())
+
+                    when (activity) {
+                        is UserProfileActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    activity.javaClass.simpleName,
+                    exception.message.toString(),
+                    exception
+                )
             }
     }
 }

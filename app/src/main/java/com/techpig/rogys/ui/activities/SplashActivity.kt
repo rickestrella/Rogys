@@ -1,4 +1,4 @@
-package com.techpig.rogys.activities
+package com.techpig.rogys.ui.activities
 
 import android.content.Intent
 import android.os.Build
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import com.techpig.rogys.R
 
 class SplashActivity : AppCompatActivity() {

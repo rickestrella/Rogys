@@ -19,4 +19,25 @@
     <string name="password_forgotten">¿Has olvidado tu contraseña?</string>
     <string name="forgotten_password_info">Ingresa la dirección de correo electrónico con el que te registraste y te enviaremos un correo para reestablecer tu contraseña.</string>
     <string name="submit">Enviar</string>
+    <string name="completa_tu_perfil">Completa tu perfil</string>
+    <string name="phone">Número de celular</string>
+    <string name="lbl_male">Hombre</string>
+    <string name="lbl_female">Mujer</string>
+    <string name="button_lbl_save">Guardar</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="press_back_again_to_exit">Presiona atrás nuevamente para salir</string>
+    <string name="Home">Inicio</string>
+    <string name="Products">Productos</string>
+    <string name="Orders">Pedidos</string>
+    <string name="settings">Ajustes</string>
+    <string name="edit">Editar</string>
+    <string name="lbl_address">Direcciones de entrega</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="edit_profile_title">Editar Perfil</string>
+    <string name="add">Agregar</string>
+    <string name="names">Nombres</string>
 </resources>

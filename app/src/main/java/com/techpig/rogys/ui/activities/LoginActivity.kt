@@ -1,4 +1,4 @@
-package com.techpig.rogys.activities
+package com.techpig.rogys.ui.activities
 
 import android.content.Intent
 import android.os.Build
@@ -10,10 +10,10 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.techpig.rogys.BaseActivity
 import com.techpig.rogys.R
 import com.techpig.rogys.firestore.FirestoreClass
 import com.techpig.rogys.models.User
+import com.techpig.rogys.utils.Constants
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
@@ -58,9 +58,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     private fun loginRegisteredUser() {
         if (validateLoginDetails()) {
             showProgressDialog("Iniciando sesión...")
-            val email: String = til_email.editText!!.text.toString().trim { it <= ' ' }
+            val email: String = et_email.text.toString().trim { it <= ' ' }
             val password: String =
-                til_password.editText!!.text.toString().trim { it <= ' ' }
+                et_password.text.toString().trim { it <= ' ' }
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -106,7 +106,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun validateLoginDetails(): Boolean {
-        if (TextUtils.isEmpty(til_email.editText!!.text.toString().trim { it <= ' ' })) {
+        if (TextUtils.isEmpty(et_email.text.toString().trim { it <= ' ' })) {
             showAlerter(
                 "Error",
                 "Verifica que hayas escrito el correo electrónico",
@@ -114,7 +114,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 3000
             )
             return false
-        } else if (TextUtils.isEmpty(til_password.editText!!.text.toString().trim { it <= ' ' })) {
+        } else if (TextUtils.isEmpty(et_password.text.toString().trim { it <= ' ' })) {
             showAlerter(
                 "Error",
                 "¿Te olvidaste de ingresar la contraseña?",
@@ -129,11 +129,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User) {
         hideProgressDialog()
 
-        Log.i("First name", user.firstName)
-        Log.i("Last name", user.lastName)
-        Log.i("e-mail", user.email)
-
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        if (user.profileCompleted == 0) {
+            val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            startActivity(intent)
+        } else {
+            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+        }
         finish()
     }
 }
