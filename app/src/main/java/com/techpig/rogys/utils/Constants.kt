@@ -7,7 +7,10 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 
 object Constants {
+    //Collections in Firestore
     const val USERS: String = "users"
+    const val PRODUCTS: String = "products"
+
     const val ROGYS_PREFERENCES: String = "RogysPrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val LOGGED_IN_FIRSTNAME: String = "logged_in_firstname"
@@ -25,6 +28,11 @@ object Constants {
     const val IMAGE: String = "image"
 
     const val COMPLETE_PROFILE: String = "profileCompleted"
+
+    const val USER_ID: String = "user_id"
+
+    const val PRODUCT_IMAGE: String = "product_image"
+
 
     fun showImageChooser(activity: Activity) {
         // An intent for launching the image selection of the phone storage.

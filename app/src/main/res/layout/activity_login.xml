@@ -43,113 +43,127 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fl_header_image" />
 
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/til_email"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:mtf_backgroundColor="@color/white"
-        app:mtf_image="@drawable/ic_email"
-        app:mtf_labelColor="@color/app_primary_pink"
-        app:mtf_openKeyboardOnFocus="true">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
-        <com.techpig.rogys.utils.RogysEditText
-            android:id="@+id/et_email"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/et_hint_email_id"
-            android:inputType="textEmailAddress"
-            android:padding="@dimen/et_padding"
-            android:textColor="@color/text_grey"
-            android:textSize="@dimen/et_textSize" />
-    </com.github.florent37.materialtextfield.MaterialTextField>
+            android:layout_height="wrap_content">
 
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/til_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_email"
-        app:mtf_backgroundColor="@color/white"
-        app:mtf_image="@drawable/ic_key"
-        app:mtf_labelColor="@color/app_primary_pink"
-        app:mtf_openKeyboardOnFocus="true">
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:id="@+id/til_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:mtf_backgroundColor="@color/white"
+                app:mtf_image="@drawable/ic_email"
+                app:mtf_labelColor="@color/app_primary_pink"
+                app:mtf_openKeyboardOnFocus="true">
 
-        <com.techpig.rogys.utils.RogysEditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/et_hint_password"
-            android:inputType="textPassword"
-            android:padding="@dimen/et_padding"
-            android:textColor="@color/text_grey"
-            android:textSize="@dimen/et_textSize" />
-    </com.github.florent37.materialtextfield.MaterialTextField>
+                <com.techpig.rogys.utils.RogysEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/et_hint_email_id"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/et_textSize" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <com.techpig.rogys.utils.RogysTextView
-        android:id="@+id/tv_forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/clickable_text_view_padding"
-        android:text="@string/lbl_forgot_password"
-        android:textColor="@color/text_grey_light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_password" />
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:id="@+id/til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_email"
+                app:mtf_backgroundColor="@color/white"
+                app:mtf_image="@drawable/ic_key"
+                app:mtf_labelColor="@color/app_primary_pink"
+                app:mtf_openKeyboardOnFocus="true">
 
-    <com.techpig.rogys.utils.RogysButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_background"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:paddingVertical="@dimen/btn_padding"
-        android:text="@string/btn_lbl_login"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/btn_textSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
+                <com.techpig.rogys.utils.RogysEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/et_hint_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/et_textSize" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login">
+            <com.techpig.rogys.utils.RogysTextView
+                android:id="@+id/tv_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="@dimen/clickable_text_view_padding"
+                android:text="@string/lbl_forgot_password"
+                android:textColor="@color/text_grey_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
-        <com.techpig.rogys.utils.RogysTextView
-            android:id="@+id/dont_have_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/clickable_text_view_padding"
-            android:text="@string/dont_have_an_account"
-            android:textColor="@color/text_grey_light"
-            android:textSize="@dimen/lbl_text_view_textSize" />
+            <com.techpig.rogys.utils.RogysButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingVertical="@dimen/btn_padding"
+                android:text="@string/btn_lbl_login"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/btn_textSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
 
-        <com.techpig.rogys.utils.RogysTextViewBold
-            android:id="@+id/tv_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="@string/register"
-            android:textColor="@color/text_grey_light"
-            android:textSize="@dimen/lbl_text_view_textSize" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login">
+
+                <com.techpig.rogys.utils.RogysTextView
+                    android:id="@+id/dont_have_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/clickable_text_view_padding"
+                    android:text="@string/dont_have_an_account"
+                    android:textColor="@color/text_grey_light"
+                    android:textSize="@dimen/lbl_text_view_textSize" />
+
+                <com.techpig.rogys.utils.RogysTextViewBold
+                    android:id="@+id/tv_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/register"
+                    android:textColor="@color/text_grey_light"
+                    android:textSize="@dimen/lbl_text_view_textSize" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

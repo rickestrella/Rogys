@@ -5,16 +5,16 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.techpig.rogys.ui.activities.LoginActivity
-import com.techpig.rogys.ui.activities.RegisterActivity
-import com.techpig.rogys.ui.activities.UserProfileActivity
+import com.techpig.rogys.models.Product
 import com.techpig.rogys.models.User
-import com.techpig.rogys.ui.activities.SettingsActivity
+import com.techpig.rogys.ui.activities.*
+import com.techpig.rogys.ui.fragments.ProductsFragment
 import com.techpig.rogys.utils.Constants
 
 class FirestoreClass {
@@ -67,7 +67,7 @@ class FirestoreClass {
                     "${user.firstName} ${user.lastName}"
                 )
 
-                editor.putString(Constants.LOGGED_IN_FIRSTNAME, "${user.firstName}")
+                editor.putString(Constants.LOGGED_IN_FIRSTNAME, user.firstName)
 
                 editor.apply()
 
@@ -102,6 +102,9 @@ class FirestoreClass {
                     is UserProfileActivity -> {
                         activity.userProfileUpdateSuccess()
                     }
+                    is AddProductActivity -> {
+                        activity.productImageUpdateSuccess()
+                    }
                 }
             }
             .addOnFailureListener { e ->
@@ -114,9 +117,9 @@ class FirestoreClass {
             }
     }
 
-    fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?) {
+    fun uploadImageToCloudStorage(activity: Activity, imageFileUri: Uri?, imageType: String) {
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
-            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "." + Constants.getFileExtension(
+            imageType + System.currentTimeMillis() + "." + Constants.getFileExtension(
                 activity,
                 imageFileUri
             )
@@ -138,6 +141,9 @@ class FirestoreClass {
                         is UserProfileActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddProductActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
                     }
                 }
             }
@@ -146,12 +152,54 @@ class FirestoreClass {
                     is UserProfileActivity -> {
                         activity.hideProgressDialog()
                     }
+                    is AddProductActivity -> {
+                        activity.hideProgressDialog()
+                    }
                 }
                 Log.e(
                     activity.javaClass.simpleName,
                     exception.message.toString(),
                     exception
                 )
+            }
+    }
+
+    fun uploadProductDetails(activity: AddProductActivity, productInfo: Product) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document()
+            .set(productInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading the product details.",
+                    e
+                )
+            }
+    }
+
+    fun getProductsList(fragment: Fragment) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserId())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products List", document.documents.toString())
+                val productList: ArrayList<Product> = ArrayList()
+
+                for (i in document.documents) {
+                    val product = i.toObject(Product::class.java)
+                    product!!.product_id = i.id
+                    productList.add(product)
+                }
+
+                when (fragment) {
+                    is ProductsFragment -> {
+                        fragment.successProductListFromFireStore(productList)
+                    }
+                }
             }
     }
 }

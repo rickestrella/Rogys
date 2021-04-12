@@ -40,4 +40,18 @@
     <string name="edit_profile_title">Editar Perfil</string>
     <string name="add">Agregar</string>
     <string name="names">Nombres</string>
+    <string name="profile_updated">Tu perfil ha sido actualizado con éxito</string>
+    <string name="add_product">Agregar producto</string>
+    <string name="access_denied">Acceso denegado</string>
+    <string name="need_to_grant_access_to_perform_this_action">Necesitas permiso para realizar esta acción. Dirígete a ajustes del sistema y otorga permisos a Rogy\'s para poder continuar</string>
+    <string name="imagen_anadida">La imagen se ha actualizado exitosamente</string>
+    <string name="product_added">El producto ha sido añadido exitosamente</string>
+    <string name="no_products">No tienes ningún producto a la venta</string>
+    <string name="producto">Producto</string>
+    <string name="titulo_de_la_publicacion">Titulo de la publicacion</string>
+    <string name="precio_muestra">$2.46</string>
+    <string name="nombre_del_producto">Nombre del producto</string>
+    <string name="precio_del_producto">Precio del producto</string>
+    <string name="descripci_n_del_producto">Descripción del producto</string>
+    <string name="numero_celular">Número celular</string>
 </resources>

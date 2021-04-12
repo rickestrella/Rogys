@@ -33,8 +33,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:fillViewport="true"
+        android:orientation="vertical"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +59,8 @@
                     android:id="@+id/iv_user_photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="2.8dp"
-                    android:layout_marginVertical="2.3dp"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginVertical="2.22dp"
                     android:background="#F1F1F1"
                     android:contentDescription="@string/content_description"
                     android:scaleType="fitXY"
@@ -90,8 +91,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/names"
+                    android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:padding="@dimen/et_padding"
                     android:textColor="@color/text_grey"
                     android:textSize="@dimen/et_textSize" />
             </com.github.florent37.materialtextfield.MaterialTextField>
@@ -115,8 +116,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/et_hint_last_name"
+                    android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:padding="@dimen/et_padding"
                     android:textColor="@color/text_grey"
                     android:textSize="@dimen/et_textSize" />
             </com.github.florent37.materialtextfield.MaterialTextField>
@@ -140,8 +141,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/et_hint_email_id"
+                    android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
-                    android:padding="@dimen/et_padding"
                     android:textColor="@color/text_grey"
                     android:textSize="@dimen/et_textSize" />
             </com.github.florent37.materialtextfield.MaterialTextField>
@@ -164,9 +165,9 @@
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Número de teléfono celular"
+                    android:hint="@string/numero_celular"
+                    android:imeOptions="actionDone"
                     android:inputType="phone"
-                    android:padding="@dimen/et_padding"
                     android:textColor="@color/text_grey"
                     android:textSize="@dimen/et_textSize" />
             </com.github.florent37.materialtextfield.MaterialTextField>

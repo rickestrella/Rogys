@@ -102,6 +102,10 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                         }
                     }
                 }
+                .addOnFailureListener { e ->
+                    makeLongToast(e.localizedMessage!!)
+                    makeLongToast("¿Tienes conexión a Internet?")
+                }
         }
     }
 

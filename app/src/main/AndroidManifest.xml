@@ -5,15 +5,18 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:fullBackupContent="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rogys">
-        <activity android:name=".ui.activities.AddProductActivity"
+        <activity
+            android:name=".ui.activities.AddProductActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Rogys.NoActionBar">
+            android:theme="@style/Theme.Rogys.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
         <activity
@@ -31,13 +34,15 @@
         <activity
             android:name=".ui.activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Rogys.NoActionBar">
+            android:theme="@style/Theme.Rogys.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
         <activity
             android:name=".ui.activities.SettingsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Rogys.NoActionBar">
+            android:theme="@style/Theme.Rogys.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
         <activity android:name=".ui.activities.BaseActivity" />
@@ -50,7 +55,8 @@
             android:name=".ui.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Rogys.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"/>
         <activity
             android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait"

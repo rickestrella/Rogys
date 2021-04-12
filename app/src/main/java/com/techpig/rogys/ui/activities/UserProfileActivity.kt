@@ -99,7 +99,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                     if (validateUserProfileDetails()) {
                         showProgressDialog("Actualizando datos...")
                         if (mSelectedImageFileUri != null) {
-                            FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
+                            FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri, Constants.USER_PROFILE_IMAGE)
                         } else {
                             updateUserProfileDetails()
                         }
@@ -187,8 +187,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     private fun validateUserProfileDetails(): Boolean {
         return when {
             TextUtils.isEmpty(
-                til_phone.editText!!.text.toString()
-                    .trim { it <= ' ' }) || til_phone.editText!!.text.length < 10 || til_phone.editText!!.text.length > 10 -> {
+                et_phone.text.toString()
+                    .trim { it <= ' ' }) || et_phone.text!!.length < 9 || et_phone.text!!.length > 10 -> {
                 showAlerter(
                     "Número inválido",
                     "Debes ingresar tu número de teléfono celular para poder contactarte cuando realicemos tu pedido",
@@ -203,7 +203,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     fun userProfileUpdateSuccess() {
         hideProgressDialog()
-        makeLongToast("Tu perfil ha sido actualizado con éxito")
+        makeLongToast(getString(R.string.profile_updated))
         startActivity(Intent(this@UserProfileActivity, DashboardActivity::class.java))
         finish()
     }

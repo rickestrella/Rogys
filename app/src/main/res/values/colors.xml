@@ -151,4 +151,9 @@
     <color name="colorBorder">#E8E6E6</color>
     <color name="colorDarkGrey">#878787</color>
 
+
+    <color name="grey_bluish_dark">#111821</color>
+    <color name="grey_bluish_light">#2D323E</color>
+    <color name="main_orange_color">#FE8B02</color>
+
 </resources>

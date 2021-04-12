@@ -49,7 +49,7 @@ class RegisterActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white)
             actionBar.title = null
         }
         toolbar_register_activity.setNavigationOnClickListener {
@@ -64,7 +64,7 @@ class RegisterActivity : BaseActivity() {
     private fun validateFields(): Boolean {
         return when {
             TextUtils.isEmpty(
-                et_name.text.toString()
+                et_name.editableText.toString()
                     .trim { it <= ' ' }) || et_name.length() <= 2 -> {
                 showAlerter(
                     "¿Cuál es tu nombre?", "Introduce tu nombre", true,
@@ -72,7 +72,6 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
-
             TextUtils.isEmpty(
                 et_last_name.text.toString()
                     .trim { it <= ' ' }) || et_last_name.length() <= 2 -> {
@@ -82,7 +81,6 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
-
             TextUtils.isEmpty(et_email.text.toString()) && !android.util.Patterns.EMAIL_ADDRESS.matcher(
                 et_email.text.toString()
             ).matches() -> {
@@ -92,7 +90,6 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
-
             TextUtils.isEmpty(et_password.text.toString().trim { it <= ' ' }) -> {
                 showAlerter(
                     "Contraseña inválida", "Introduce una contraseña", true,
@@ -100,7 +97,6 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
-
             TextUtils.isEmpty(
                 et_confirm_password.text.toString()
                     .trim { it <= ' ' }) || (et_password.text.toString() != et_confirm_password.text.toString()) -> {
@@ -112,7 +108,6 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
-
             !cb_terms_and_conditions.isChecked -> {
                 showAlerter(
                     "¿Leíste los T&C?",
@@ -122,7 +117,6 @@ class RegisterActivity : BaseActivity() {
                 )
                 false
             }
-
             else -> {
                 true
             }
@@ -146,10 +140,10 @@ class RegisterActivity : BaseActivity() {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
 
                         val user = User(
-                        firebaseUser.uid,
-                        et_name.text.toString().trim {it <= ' '},
-                        et_last_name.text.toString().trim {it <= ' '},
-                        et_email.text.toString().trim {it <= ' '},
+                            firebaseUser.uid,
+                            et_name.text.toString().trim { it <= ' ' },
+                            et_last_name.text.toString().trim { it <= ' ' },
+                            et_email.text.toString().trim { it <= ' ' },
                         )
 
                         FirestoreClass().registerUser(this@RegisterActivity, user)
