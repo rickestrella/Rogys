@@ -110,40 +110,50 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                     try {
                         GlideLoader(this).loadUserPicture(mSelectedImageFileURI!!, iv_product_image)
                     } catch (e: IOException) {
-                        makeShortToast("No pudimos cargar tu imagen, inténtalo nuevamente")
+                        makeShortToast(getString(R.string.couldnt_load_image_try_again))
                         makeLongToast(e.localizedMessage!!)
                         e.printStackTrace()
                     }
                 }
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
-            makeLongToast("No has seleccionado ninguna imagen, se mantendrá la que estaba antes")
+            makeLongToast(getString(R.string.image_not_selected))
         }
     }
 
-    fun validateProductDetails(): Boolean {
+    private fun validateProductDetails(): Boolean {
         return when {
             mSelectedImageFileURI == null -> {
-                showAlerter("¿Qué estás vendiendo?", "Debes seleccionar una imagen", true, 3500)
+                showAlerter(
+                    getString(R.string.what_are_you_selling),
+                    getString(R.string.select_image),
+                    true,
+                    3500
+                )
                 false
             }
             TextUtils.isEmpty(et_product_title.text.toString().trim { it <= ' ' }) -> {
                 showAlerter(
-                    "¿Cómo se llama el producto?",
-                    "Recuerda escribir un título",
+                    getString(R.string.what_is_the_product_name),
+                    getString(R.string.write_a_title),
                     true,
                     3000
                 )
                 false
             }
             TextUtils.isEmpty(et_product_price.text.toString().trim { it <= ' ' }) -> {
-                showAlerter("¿Gratis?", "Asegúrate de indicar el valor del prducto", true, 3000)
+                showAlerter(
+                    getString(R.string.is_it_free),
+                    getString(R.string.put_the_price),
+                    true,
+                    3000
+                )
                 false
             }
             TextUtils.isEmpty(et_product_description.text.toString().trim { it <= ' ' }) -> {
                 showAlerter(
-                    "Asegúrate de poner una descripción",
-                    "El producto debe estar detallado para que el cliente no se confunda",
+                    getString(R.string.put_description),
+                    getString(R.string.product_must_have_description),
                     true,
                     3000
                 )

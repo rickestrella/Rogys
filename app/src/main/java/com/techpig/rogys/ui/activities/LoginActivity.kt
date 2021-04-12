@@ -92,7 +92,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                                         "Cuenta inhabilitada",
                                         "Tu cuenta ha sido restringida por no respetar nuestros términos y condiciones.\nSi crees que ha sido un error, por favor, comunícate de inmediato con Ricardo Estrella al 0 979 102 096.",
                                         true,
-                                        6000
+                                        6500
                                     )
                                 }
                                 else -> {

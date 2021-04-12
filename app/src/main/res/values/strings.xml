@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Rogy\'s</string>
-    <string name="content_description">auth screen background</string>
+    <string name="content_description">Auth screen background</string>
     <string name="title_login">Identifícate</string>
     <string name="et_hint_email_id">E-mail</string>
     <string name="lbl_forgot_password">¿Has olvidado la contraseña?</string>
@@ -48,10 +48,20 @@
     <string name="product_added">El producto ha sido añadido exitosamente</string>
     <string name="no_products">No tienes ningún producto a la venta</string>
     <string name="producto">Producto</string>
-    <string name="titulo_de_la_publicacion">Titulo de la publicacion</string>
+    <string name="titulo_de_la_publicacion">Título de la publicacion</string>
     <string name="precio_muestra">$2.46</string>
     <string name="nombre_del_producto">Nombre del producto</string>
     <string name="precio_del_producto">Precio del producto</string>
     <string name="descripci_n_del_producto">Descripción del producto</string>
     <string name="numero_celular">Número celular</string>
+    <string name="couldnt_load_image_try_again">No se pudo cargar la imagen, inténtalo nuevamente</string>
+    <string name="image_not_selected">No has seleccionado ninguna imagen, se mantendrá la que estaba antes</string>
+    <string name="what_are_you_selling">¿Qué estás vendiendo?</string>
+    <string name="select_image">Debes seleccionar una imagen</string>
+    <string name="what_is_the_product_name">¿Cómo se llama el producto?</string>
+    <string name="write_a_title">Recuerda escribir un título</string>
+    <string name="is_it_free">¿Gratis?</string>
+    <string name="put_the_price">Asegúrate de indicar el valor del prducto</string>
+    <string name="put_description">Asegúrate de poner una descripción</string>
+    <string name="product_must_have_description">El producto debe estar detallado para que el cliente no se confunda.</string>
 </resources>
